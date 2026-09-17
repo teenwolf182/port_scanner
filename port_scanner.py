@@ -20,7 +20,9 @@ def grab_banner(ip, port):
             s.connect((ip, port))
             
             # Send a generic request if it's a known web port
-            if port in:
+            # Fixed: explicitly tracking port numbers to avoid syntax breaks
+            web_ports = [80, 443, 8080, 8443]
+            if port in web_ports:
                 s.sendall(b"HEAD / HTTP/1.0\r\n\r\n")
                 
             banner = s.recv(1024).decode('utf-8', errors='ignore').strip()
