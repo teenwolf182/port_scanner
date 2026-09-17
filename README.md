@@ -20,8 +20,8 @@ This script requires Python 3 and administrative privileges to send raw packets 
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com
-cd YOUR-REPO-NAME
+git clone https://github.com](https://github.com/teenwolf182/port_scanner.git
+cd port_scanner
 ```
 
 ### 2. Install dependencies
@@ -37,7 +37,7 @@ sudo pip3 install scapy
 Run the scanner utilizing administrative privileges (`sudo`). This is mandatory so `Scapy` can hook into the operating system network stack to inject raw Layer 3 packets.
 
 ```bash
-sudo python3 port_scanner.py
+sudo python3 scanner.py
 ```
 
 ### Example Input/Output Sequence:
