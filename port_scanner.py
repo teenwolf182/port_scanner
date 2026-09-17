@@ -19,18 +19,19 @@ def grab_banner(ip, port):
             s.settimeout(1.5)
             s.connect((ip, port))
             
-            # Send a generic request for web servers, otherwise just read raw data
+            # Send a generic request if it's a known web port
             if port in:
                 s.sendall(b"HEAD / HTTP/1.0\r\n\r\n")
                 
             banner = s.recv(1024).decode('utf-8', errors='ignore').strip()
             return banner if banner else "Unknown Service (No Banner)"
     except Exception:
-        # Common fallback: resolve well-known port names if banner grab times out
+        # Fallback: resolve well-known port names if banner grab times out
         try:
             return socket.getservbyport(port, "tcp")
         except OSError:
             return "Unknown Service"
+
 def scan_port_syn(ip, port):
     """Performs a TCP SYN Scan using Scapy."""
     try:
